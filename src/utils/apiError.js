@@ -1,7 +1,7 @@
 // Define a custom error class named ApiError which extends the built-in Error class.
 class ApiError extends Error {
   // Constructor function for the ApiError class.
-  constructor(statusCode, message = "Something went worng", errors = [], statck = "") {
+  constructor(statusCode, message = "Something went worng", errors = [], stack = "") {
     // Call the constructor of the Error class with the provided message.
     super(message);
     // Initialize the statusCode property of the ApiError instance.
@@ -16,9 +16,9 @@ class ApiError extends Error {
     this.errors = errors;
 
     // Check if a stack trace is provided.
-    if (statck) {
+    if (stack) {
       // If provided, set the stack property of the ApiError instance to the provided stack trace.
-      this.stack = statck;
+      this.stack = stack;
     } else {
       // If not provided, capture the stack trace by calling Error.captureStackTrace().
       // This helps in setting a proper stack trace for the error.
