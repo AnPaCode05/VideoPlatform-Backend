@@ -14,13 +14,6 @@ dotenv.config({ path: "./env" });
 connectDB()
   .then(() => {
 
-    // Starting the Express server and listening on the specified port or defaulting to port 8000
-    app.listen(process.env.PORT || 8000, () => {
-      // Logging a message indicating that the server is running and on which port
-      console.log(`Server is running on port ${process.env.PORT}`);
-    });
-  })
-  .catch((err) => {
 
     // Handling errors that occur during database connection
     // Listening for the 'error' event emitted by the Express application
@@ -30,6 +23,16 @@ connectDB()
       // Throwing the error for further handling
       throw error;
     })
+
+    // Starting the Express server and listening on the specified port or defaulting to port 8000
+    app.listen(process.env.PORT || 8000, () => {
+      // Logging a message indicating that the server is running and on which port
+      console.log(`Server is running on port ${process.env.PORT}`);
+    });
+  })
+  .catch((err) => {
+
+
     // Logging an error message if there was an issue connecting to the database
     console.log("Error connecting to DB", err);
   });
